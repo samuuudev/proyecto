@@ -1,6 +1,9 @@
+<div class="registro-container">
 <h2>Registrate</h2>
 
 <input type="text" placeholder="Nombre de usuario" [(ngModel)] = "username">
-<input type="password" [(ngModel)] = "password">
+<input type="password" [(ngModel)] = "password" placeholder="Contraseña">
 <input type="email" placeholder="Correo electronico" [(ngModel)] = "email">
 <button (click)="registrar()">Registrar</button>
+<a routerLink="/">¿Ya tienes cuenta? Inicia sesión</a>
+</div>

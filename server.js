@@ -33,7 +33,7 @@ app.post("/api/login", async (req, res) => {
 });
 
 
-app.post("api/registro", async (peticion, respuesta) => {
+app.post("/api/registro", async (peticion, respuesta) => {
   const { username,password,email} = peticion.body;
   console.log("Datos de registro recibidos: ");
 
