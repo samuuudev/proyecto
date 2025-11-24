@@ -1,0 +1,120 @@
+.registro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 400px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 2px solid #ff4655;
+  animation: fadeInUp 0.6s ease-out;
+
+  h2 {
+    background: linear-gradient(45deg, #ff4655, #ff8e9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    background: #1a2a3a;
+    border: 2px solid #2a3b4c;
+    border-radius: 6px;
+    color: #fffbf5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #8fa3b7;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #ff4655;
+      box-shadow: 0 0 0 2px rgba(255, 70, 85, 0.2);
+    }
+
+    &:hover {
+      border-color: #ff4655;
+    }
+  }
+
+  button {
+    background: linear-gradient(45deg, #ff4655, #ff5e6c);
+    border: none;
+    border-radius: 6px;
+    color: #fffbf5;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(45deg, #ff5e6c, #ff4655);
+      box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  a {
+    color: #fffbf5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #ff4655;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .registro-container {
+    margin: 1rem;
+    padding: 1.5rem;
+    min-height: 70vh;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    input, button {
+      padding: 0.6rem 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .registro-container {
+    margin: 0.5rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+}

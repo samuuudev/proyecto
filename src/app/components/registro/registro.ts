@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { Console, error } from 'console';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.html',
   styleUrl: './registro.scss',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule]
+  imports: [FormsModule, CommonModule, HttpClientModule, RouterLink]
 })
 export class RegistroComponent {
   username = "";
@@ -20,12 +19,17 @@ export class RegistroComponent {
 
   constructor(private authService: AuthService) {}
 
- registrar() {
-  console.log("Registro con: ", this.username, this.password);
-  this.authService.register(this.username, this.password, this.email).subscribe({
-    next: res => window.alert("Registro exitoso" + JSON.stringify(res)),
-    error: err => console.log("Error en el registro del usuario")
-  });
- }
-
+  registrar() {
+    console.log("Registro con: ", this.username, this.password, this.email);
+    this.authService.register(this.username, this.password, this.email).subscribe({
+      next: (res) => {
+        console.log("Respuesta del servidor:", res);
+        window.alert("Registro exitoso: " + JSON.stringify(res));
+      },
+      error: (err) => {
+        console.error("Error en el registro del usuario:", err);
+        window.alert("Error al registrar: " + err.message);
+      }
+    });
+  }
 }
