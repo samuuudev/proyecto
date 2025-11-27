@@ -25,9 +25,18 @@ export class LoginComponent {
   console.log('Intentando login con:', this.username, this.password);
   this.authService.login(this.username, this.password).subscribe({
     next: res => {
-      console.log('Login exitoso', res);
-      if (res.user && res.user.rol == 'admin') {
-        this.router.navigate(['/admin']);
+      console.log('Login: ', res);
+      if (res.user) {
+        // if (res.user.rol == "admin") 
+        switch (res.user.rol) {
+          case "admin":
+            this.router.navigate(['/admin']);
+            break;
+          case "jugador":
+            this.router.navigate(["/jugador"]);
+            break;
+          }
+
       } else {
         this.errorMessage = 'Usuario o contraseña incorrectos';
       }

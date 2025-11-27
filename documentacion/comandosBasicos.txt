@@ -1,0 +1,9 @@
+Comandos
+
+Hot Reloading
+- npm run dev       // lanza aplicacion completa (sin tocar configuracion)
+- ng serve          // lanza server
+
+Compilacion y construccion
+- npm run build     // Comando para crear una build
+- ng new (nombre) --routing --style=scss

@@ -16,6 +16,10 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("¡¡¡Conectado a MongoDB!!!"))
   .catch(err => console.log("Error al conectarse a MongoDB :(", err));
 
+mongoose.connection.on("connected", () => {
+  console.log("Base conectada:", mongoose.connection.db.databaseName);
+});
+
 // Ruta de login
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
@@ -34,14 +38,15 @@ app.post("/api/login", async (req, res) => {
 
 
 app.post("/api/registro", async (peticion, respuesta) => {
-  const { username,password,email} = peticion.body;
-  console.log("Datos de registro recibidos: ");
+  const { username,password,email, dni} = peticion.body;
+  console.log("Datos de registro recibidos: ", peticion.body);
 
   try {
     const usuarioCreado = new Usuario ({
       username: username,
       password: password,
       email: email,
+      dni: dni,
       rol : "jugador"
     });
       await usuarioCreado.save();
@@ -50,6 +55,7 @@ app.post("/api/registro", async (peticion, respuesta) => {
 
   } catch (error) {
     console.log("Error al crear el usuario: ", error);
+    respuesta.status(400).json({ error: error.message });
   }
 
 

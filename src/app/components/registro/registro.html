@@ -1,9 +1,57 @@
 <div class="registro-container">
-<h2>Registrate</h2>
+  <div class="registro-header">
+    <h2>Regístrate</h2>
+    <p>Crea tu cuenta para comenzar</p>
+  </div>
 
-<input type="text" placeholder="Nombre de usuario" [(ngModel)] = "username">
-<input type="password" [(ngModel)] = "password" placeholder="Contraseña">
-<input type="email" placeholder="Correo electronico" [(ngModel)] = "email">
-<button (click)="registrar()">Registrar</button>
-<a routerLink="/">¿Ya tienes cuenta? Inicia sesión</a>
+  <form class="registro-form">
+    <!-- Usuario y Contraseña -->
+    <input 
+      type="text" 
+      placeholder="Nombre de usuario" 
+      [(ngModel)]="username" 
+      name="username"
+      required>
+    
+    <input 
+      type="password" 
+      placeholder="Contraseña" 
+      [(ngModel)]="password" 
+      name="password"
+      required>
+
+    <!-- Correo y DNI -->
+    <input 
+      type="email" 
+      placeholder="Correo electrónico" 
+      [(ngModel)]="email" 
+      name="email"
+      required>
+    
+    <input 
+      type="text" 
+      placeholder="DNI" 
+      [(ngModel)]="dni" 
+      name="dni"
+      required>
+
+
+<!-- [(ngModel)]="rol"  -->
+
+    <!-- Rol -->
+    <select 
+      class="rol-select" 
+      name="rol"
+      required>
+      <option value="" disabled selected>Selecciona tu rol</option>
+      <option value="arbitro">Árbitro</option>
+      <option value="usuario">Usuario</option>
+    </select>
+
+    <button class="btn-registro" (click)="registrar()">Crear Cuenta</button>
+  </form>
+
+  <div class="registro-footer">
+    <a routerLink="/">¿Ya tienes cuenta? Inicia sesión</a>
+  </div>
 </div>

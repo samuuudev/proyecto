@@ -1,3 +1,6 @@
+// Importar la fuente Tungsten
+@import url('https://fonts.googleapis.com/css2?family=Tungsten+Bold&display=swap');
+
 .registro-container {
   display: flex;
   flex-direction: column;
@@ -9,83 +12,156 @@
   border-radius: 12px;
   margin: 2rem auto;
   max-width: 400px;
+  width: 90%; // Aseguramos que no sobrepase el ancho disponible
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   border: 2px solid #ff4655;
   animation: fadeInUp 0.6s ease-out;
+  font-family: 'Tungsten Bold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box; // Importante para que el padding no afecte el ancho
 
-  h2 {
-    background: linear-gradient(45deg, #ff4655, #ff8e9e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .registro-header {
+    text-align: center;
     margin-bottom: 2rem;
-  }
-
-  input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    background: #1a2a3a;
-    border: 2px solid #2a3b4c;
-    border-radius: 6px;
-    color: #fffbf5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1rem;
-    transition: all 0.3s ease;
 
-    &::placeholder {
+    h2 {
+      background: linear-gradient(45deg, #ff4655, #ff8e9e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      font-family: 'Tungsten Bold', sans-serif;
+    }
+
+    p {
       color: #8fa3b7;
-    }
-
-    &:focus {
-      outline: none;
-      border-color: #ff4655;
-      box-shadow: 0 0 0 2px rgba(255, 70, 85, 0.2);
-    }
-
-    &:hover {
-      border-color: #ff4655;
+      font-size: 1.1rem;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
   }
 
-  button {
-    background: linear-gradient(45deg, #ff4655, #ff5e6c);
-    border: none;
-    border-radius: 6px;
-    color: #fffbf5;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 0.75rem 1.5rem;
+  .registro-form {
     width: 100%;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    box-sizing: border-box; // Aseguramos que herede el box-sizing
 
-    &:hover {
-      background: linear-gradient(45deg, #ff5e6c, #ff4655);
-      box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);
-      transform: translateY(-2px);
+    input, select {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: #1a2a3a;
+      border: 2px solid #2a3b4c;
+      border-radius: 6px;
+      color: #fffbf5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      box-sizing: border-box; // Crucial para que el padding no expanda el ancho
+
+      &::placeholder {
+        color: #8fa3b7;
+        text-transform: none;
+        font-size: 0.9rem;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #ff4655;
+        box-shadow: 0 0 0 2px rgba(255, 70, 85, 0.3);
+        transform: translateY(-1px);
+      }
+
+      &:hover {
+        border-color: #ff4655;
+      }
     }
 
-    &:active {
-      transform: translateY(0);
+    select {
+      cursor: pointer;
+      text-transform: uppercase;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ff4655' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 14px;
+      
+      option {
+        background: #1a2a3a;
+        color: #fffbf5;
+        padding: 0.8rem;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        
+        &:disabled {
+          color: #8fa3b7;
+          text-transform: none;
+        }
+      }
+    }
+
+    .btn-registro {
+      background: linear-gradient(45deg, #ff4655, #ff5e6c);
+      border: none;
+      border-radius: 6px;
+      color: #fffbf5;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 1rem 1.5rem;
+      width: 100%;
+      margin-top: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      font-family: 'Tungsten Bold', sans-serif;
+      box-shadow: 0 4px 12px rgba(255, 70, 85, 0.3);
+      box-sizing: border-box;
+
+      &:hover {
+        background: linear-gradient(45deg, #ff5e6c, #ff4655);
+        box-shadow: 0 6px 16px rgba(255, 70, 85, 0.4);
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
     }
   }
 
-  a {
-    color: #fffbf5;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
+  .registro-footer {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
 
-    &:hover {
-      color: #ff4655;
-      text-decoration: underline;
+    a {
+      color: #fffbf5;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      display: inline-block;
+
+      &:hover {
+        color: #ff4655;
+        background: rgba(255, 70, 85, 0.1);
+        text-decoration: none;
+      }
     }
   }
 }
@@ -93,28 +169,57 @@
 // Responsive
 @media (max-width: 768px) {
   .registro-container {
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 1.5rem;
     min-height: 70vh;
+    max-width: 380px;
+    width: 95%;
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+    .registro-header {
+      h2 {
+        font-size: 2.2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
     }
 
-    input, button {
-      padding: 0.6rem 0.8rem;
+    .registro-form {
+      gap: 1rem;
+
+      input, select, .btn-registro {
+        padding: 0.8rem 0.9rem;
+      }
+      
+      .btn-registro {
+        font-size: 1.1rem;
+      }
     }
   }
 }
 
 @media (max-width: 480px) {
   .registro-container {
-    margin: 0.5rem;
-    padding: 1rem;
+    margin: 0.5rem auto;
+    padding: 1.25rem;
+    max-width: 350px;
 
-    h2 {
-      font-size: 1.3rem;
+    .registro-header {
+      h2 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 0.9rem;
+      }
+    }
+    
+    .registro-form {
+      .btn-registro {
+        font-size: 1rem;
+        padding: 0.9rem 1.25rem;
+      }
     }
   }
 }

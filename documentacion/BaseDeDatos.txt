@@ -1,0 +1,44 @@
+JUGADOR
+- Nombre
+- Equipo
+- KDA
+- ACS
+- ADR
+- %HS
+- Clutches
+- %Victorias
+- Agente (mas usado)
+- Mapa ()
+
+
+EQUIPO
+- Nombre
+- Pais
+- Region
+- Logo/Icono
+- Fecha fundacion (dd/mm/aaaa)
+- Descripcion
+
+Plantilla
+- Nombre
+- Rol / agente principal
+- KDA medio
+- %HS
+- Clutches
+
+Estadisticas Equipo
+- Victorias/Derrotas
+- %Victorias
+- ACS promedio Equipo
+- ADR promedio
+- %Clutches ganados
+- %Victorias ronda pistolas
+- %Victorias ataque/defensa
+- Mapa favorito
+
+Partidos
+- Equipo1
+- Equipo2
+- Fecha y hora
+- Resultado
+- Enlace del partido
