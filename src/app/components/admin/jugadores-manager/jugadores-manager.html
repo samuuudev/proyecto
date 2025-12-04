@@ -1,0 +1,88 @@
+<div class="admin-panel-content">
+    <h2 class="section-title">Usuarios</h2>
+
+    <div class="new-user-form">
+        <input type="text" placeholder="Nombre" class="form-input" [(ngModel)]="newUser.username">
+
+        <input type="email" placeholder="Email" class="form-input" [(ngModel)]="newUser.email">
+
+        <input type="text" placeholder="DNI" class="form-input" [(ngModel)]="newUser.dni">
+
+        <input type="password" placeholder="Contraseña" class="form-input" [(ngModel)]="newUser.password">
+
+        <select class="form-input" [(ngModel)]="newUser.rol">
+            <option value="admin">Administrador</option>
+            <option value="arbitro">Arbitro</option>
+            <option value="usuario">Usuario</option>
+            <option value="jugador">Jugador</option>
+        </select>
+
+        <button class="add-button" (click)="addUser()">
+            <span class="icon-plus">+</span> Agregar Usuario
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th class="action-column">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.rol }}</td>
+                    <td class="action-cell">
+                        <button class="action-btn edit-btn" title="Editar" (click)="editUser(user)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </button>
+
+                        <button class="action-btn delete-btn" title="Eliminar" (click)="deleteUser(user._id)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- MODAL EDITAR USUARIO -->
+    <div class="modal" *ngIf="editingUser">
+        <div class="modal-content">
+            <h3>Editar Usuario</h3>
+            <label>Nombre / Username</label>
+            <input type="text" placeholder="Nombre" class="form-input" [(ngModel)]="editingUser.username">
+            <label>Email</label>
+            <input type="email" placeholder="Email" class="form-input" [(ngModel)]="editingUser.email">
+            <label>DNI</label>
+            <input type="text" placeholder="DNI" class="form-input" [(ngModel)]="editingUser.dni">
+            <label>Rol</label>
+            <select class="form-input" [(ngModel)]="editingUser.rol">
+                <option value="admin">Administrador</option>
+                <option value="jugador">Jugador</option>
+                <option value="arbitro">Árbitro</option>
+                <option value="usuario">Usuario</option>
+            </select>
+            <div class="modal-actions">
+                <button class="add-button" (click)="updateUser()">Guardar</button>
+                <button class="action-btn delete-btn" (click)="closeEditModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

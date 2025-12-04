@@ -62,6 +62,56 @@ app.post("/api/registro", async (peticion, respuesta) => {
 });
 
 
+// CRUD de usuarios (jugadores)
+// Obtener todos
+app.get("/api/users", async (req, res) => {
+  try {
+    const users = await Usuario.find();
+    res.json(users);
+  } catch (error) {
+    console.error("Error obteniendo usuarios:", error);
+    res.status(500).json({ error: "Error obteniendo usuarios" });
+  }
+});
+
+// Crear usuario
+app.post("/api/users", async (req, res) => {
+  try {
+    const nuevo = new Usuario(req.body);
+    await nuevo.save();
+    res.json({ message: "Usuario creado", nuevo });
+  } catch (error) {
+    console.error("Error creando usuario:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Editar usuario
+app.put("/api/users/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const actualizado = await Usuario.findByIdAndUpdate(id, req.body, { new: true });
+    res.json({ message: "Usuario actualizado", actualizado });
+  } catch (error) {
+    console.error("Error actualizando usuario:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Borrar usuario
+app.delete("/api/users/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Usuario.findByIdAndDelete(id);
+    res.json({ message: "Usuario eliminado" });
+  } catch (error) {
+    console.error("Error eliminando usuario:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
 
 // Puerto
 const PORT = process.env.PORT || 3000;
