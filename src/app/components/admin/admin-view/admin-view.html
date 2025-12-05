@@ -4,7 +4,7 @@
       <h2>Admin</h2>
       <a (click)="mostrar('usuarios')">Usuarios</a>
       <a (click)="mostrar('arbitros')">Arbitros</a>
-      <a (click)="mostrar('competiciones')">Competiciones</a>
+      <a (click)="mostrar('partidos')">partidos</a>
     </nav>
   </aside>
 
@@ -15,8 +15,8 @@
     <div *ngIf="seccionActiva === 'arbitros'" class="arbitrosCRUD">
       <app-arbitros-manager></app-arbitros-manager>
     </div>
-    <div *ngIf="seccionActiva === 'competiciones'" class="competicionesCRUD">
-      <!-- <app-competiciones-manager></app-competiciones-manager> -->
+    <div *ngIf="seccionActiva === 'partidos'" class="partidosCRUD">
+      <app-partidos-manager></app-partidos-manager>
     </div>
   </main>
 </div>

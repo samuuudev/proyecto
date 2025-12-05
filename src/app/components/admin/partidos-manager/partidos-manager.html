@@ -1,0 +1,96 @@
+<div class="partidos-manager-container">
+  <h2>Gestión de Partidos de Valorant</h2>
+
+  <div class="form-container">
+    <h3>{{ partidoSeleccionado._id ? 'Editar Partido' : 'Agregar Nuevo Partido' }}</h3>
+    <form (ngSubmit)="guardarPartido()">
+      <input type="hidden" name="_id" [(ngModel)]="partidoSeleccionado._id">
+
+      <div class="form-group">
+        <label for="equipoA">Equipo A:</label>
+        <input id="equipoA" type="text" name="equipoA" [(ngModel)]="partidoSeleccionado.equipoA" required>
+      </div>
+
+      <div class="form-group">
+        <label for="equipoB">Equipo B:</label>
+        <input id="equipoB" type="text" name="equipoB" [(ngModel)]="partidoSeleccionado.equipoB" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fecha">Fecha y Hora:</label>
+        <input id="fecha" type="datetime-local" name="fecha" [(ngModel)]="partidoSeleccionado.fecha" required>
+      </div>
+
+      <div class="form-group">
+        <label for="mapa">Mapa:</label>
+        <select id="mapa" name="mapa" [(ngModel)]="partidoSeleccionado.mapa" required>
+          <option value="Bind">Bind</option>
+          <option value="Haven">Haven</option>
+          <option value="Split">Split</option>
+          <option value="Ascent">Ascent</option>
+          <option value="Icebox">Icebox</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="scoreA">Score A:</label>
+        <input id="scoreA" type="number" name="scoreA" [(ngModel)]="partidoSeleccionado.scoreA" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="scoreB">Score B:</label>
+        <input id="scoreB" type="number" name="scoreB" [(ngModel)]="partidoSeleccionado.scoreB" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" [(ngModel)]="partidoSeleccionado.estado" required>
+          <option value="pendiente">Pendiente</option>
+          <option value="en curso">En Curso</option>
+          <option value="finalizado">Finalizado</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">{{ partidoSeleccionado._id ? 'Actualizar' : 'Crear' }} Partido</button>
+      <button type="button" class="btn btn-secondary" (click)="resetearFormulario()" *ngIf="partidoSeleccionado._id">Cancelar Edición</button>
+    </form>
+  </div>
+
+  <hr>
+
+  <div class="partidos-list">
+    <h3>Lista de Partidos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Equipo A</th>
+          <th>Equipo B</th>
+          <th>Fecha</th>
+          <th>Mapa</th>
+          <th>Score</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let partido of partidos">
+          <td>{{ partido.equipoA }}</td>
+          <td>{{ partido.equipoB }}</td>
+          <td>{{ partido.fecha | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ partido.mapa }}</td>
+          <td>{{ partido.scoreA }} - {{ partido.scoreB }}</td>
+          <td><span [ngClass]="['estado-' + partido.estado]">{{ partido.estado | titlecase }}</span></td>
+          <td>
+            <button class="btn btn-edit" (click)="cargarPartidoParaEdicion(partido)">Editar</button>
+            <button class="btn btn-delete" (click)="eliminarPartido(partido._id)">Eliminar</button>
+          </td>
+        </tr>
+        <tr *ngIf="partidos.length === 0">
+          <td colspan="7" class="no-data">No hay partidos registrados.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="mensaje" class="alerta">{{ mensaje }}</div>
+</div>

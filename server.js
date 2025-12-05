@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import Usuario from "./src/app/core/models/User.js";
+import Partido from "./src/app/core/models/Partido.js";
 
 dotenv.config();
 const app = express();
@@ -38,20 +39,20 @@ app.post("/api/login", async (req, res) => {
 
 
 app.post("/api/registro", async (peticion, respuesta) => {
-  const { username,password,email, dni} = peticion.body;
+  const { username, password, email, dni } = peticion.body;
   console.log("Datos de registro recibidos: ", peticion.body);
 
   try {
-    const usuarioCreado = new Usuario ({
+    const usuarioCreado = new Usuario({
       username: username,
       password: password,
       email: email,
       dni: dni,
-      rol : "jugador"
+      rol: "jugador"
     });
-      await usuarioCreado.save();
+    await usuarioCreado.save();
 
-      respuesta.json({message: "Usuario registrado con exito", usuarioCreado});
+    respuesta.json({ message: "Usuario registrado con exito", usuarioCreado });
 
   } catch (error) {
     console.log("Error al crear el usuario: ", error);
@@ -112,6 +113,57 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
+
+// Partidos
+
+// Obtener todos los partidos
+app.get("/api/partidos", async (req, res) => {
+  try {
+    const partidos = await Partido.find();
+    res.json(partidos);
+  } catch (error) {
+    console.error("Error obteniendo partidos:", error);
+    res.status(500).json({ error: "Error obteniendo partidos" });
+  }
+});
+
+// Crear un nuevo partido
+app.post("/api/partidos", async (req, res) => {
+  try {
+    const nuevoPartido = new Partido(req.body);
+    await nuevoPartido.save();
+    res.json({ message: "Partido creado", nuevoPartido });
+  } catch (error) {
+    console.error("Error creando partido:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Editar partido
+app.put("/api/partidos/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const actualizado = await Partido.findByIdAndUpdate(id, req.body, { new: true });
+    res.json({ message: "Partido actualizado", actualizado });
+  } catch (error) {
+    console.error("Error actualizando partido:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Borrar partido
+app.delete("/api/partidos/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Partido.findByIdAndDelete(id);
+    res.json({ message: "Partido eliminado" });
+  } catch (error) {
+    console.error("Error eliminando partido:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
 
 // Puerto
 const PORT = process.env.PORT || 3000;

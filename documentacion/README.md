@@ -8,11 +8,12 @@ FUNCIONALIDADES:
         [] - A2.1 Ver asignados
         [] - A2.2 ver anteriores
         
-*   [] - J1 CRUD(JUGADORES)
-        [] - J1.1 Creacion
-        [] - J1.2 Modificacion
-        [] - J1.3 Mostrar
-        [] - J1.1 Eliminar
+*   [x] - U1 CRUD(USUARIOS)
+        [x] - U1.1 Creacion
+        [x] - U1.2 Modificacion
+        [x] - U1.3 Mostrar
+        [x] - U1.1 Eliminar
+        
 **  [] - J2 Listar partidos(JUGADOR)
 **  [] - J3 Listar competiciones (JUGADOR)
 ****[] - J4 Mostrar equipo (Jugador)
