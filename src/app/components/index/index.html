@@ -1,0 +1,133 @@
+<!-- NAVBAR NORMAL -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="navbar_normal">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerlink="/">Liga Valorant</a>
+
+    <div class="text-center">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerlink="/">Inicio</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+            Ligas
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerlink="/ligas">Inicio</a></li>
+            <li><a class="dropdown-item" fragment="ligas-activas-pro" routerlink="/ligas">Liga Profesional</a></li>
+            <li><a class="dropdown-item" fragment="ligas-activas-amateur" routerlink="/ligas">Liga Amateur</a></li>
+            <li><a class="dropdown-item" fragment="ligas-inactivas-pro" routerlink="/ligas">Ligas inactivas</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" routerlink="/equipos">Equipos</a></li>
+        <li class="nav-item"><a class="nav-link" routerlink="/jugadores">Jugadores</a></li>
+        <li class="nav-item"><a class="nav-link" routerlink="/partidos">Partidos</a></li>
+        <li class="nav-item"><a class="nav-link" routerlink="/arbitros">Árbitros</a></li>
+        <li class="nav-item"><a class="nav-link" routerlink="/inscripcion">Inscripción</a></li>
+      </ul>
+    </div>
+
+    <div class="text-end">
+      <button class="btn btn-primary">Iniciar sesión</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section
+  id="hero"
+  class="hero-section text-light py-5 align-items-center vh-100"
+  style="
+    background:
+      linear-gradient(rgba(15, 25, 35, 0.8), rgba(15, 25, 35, 0.96)),
+      url('assets/images/LNY_Sage-Wallpapers/Static/LNY_Sage-5_CallBack.jpg')
+      center/cover;
+  "
+>
+  <div class="container text-center">
+    <h1 class="display-3 fw-bold mb-4 hero-title">¿Listo para la Batalla?</h1>
+    <p class="lead mb-4 hero-subtitle">
+      Únete a la competencia más grande de Valorant. Forma tu equipo y demuestra tu habilidad.
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 mb-2">
+        <a routerlink="/inscripcion" class="btn btn-primary">Inscribir Equipo</a>
+      </div>
+      <div class="col-12 col-md-4">
+        <a href="#info-liga" class="btn btn-outline-light">Más Información</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOVEDADES -->
+<section id="novedades" class="my-5">
+  <div class="container">
+    <h1>Novedades</h1>
+
+    <div class="row row-cols-1 row-cols-md-3">
+      <div class="col d-flex justify-content-center" *ngFor="let n of [1,2,3]">
+        <div class="card" style="width: 18rem;">
+          <img src="assets/Images/SeulChampions-1920x1080.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Noticia destacada</h5>
+            <p class="card-text">Contenido de ejemplo.</p>
+            <a class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO LIGA -->
+<section id="info-liga" class="my-5">
+  <div class="container text-center">
+    <h2>Información de las competiciones</h2>
+
+    <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Ligas profesionales</h5>
+            <p class="card-text">Sigue las ligas activas.</p>
+            <a routerlink="/ligas" class="btn btn-outline-primary">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Liga Amateur</h5>
+            <p class="card-text">Para equipos emergentes.</p>
+            <a routerlink="/ligas" fragment="ligas-activas-amateur" class="btn btn-outline-primary">
+              Ver detalles
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Ranking</h5>
+            <p class="card-text">Clasificación general.</p>
+            <a routerlink="/clasificacion" class="btn btn-outline-primary">
+              Ver ranking
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-4 mt-5">
+  <div class="container text-center">
+    <p>© 2025 Liga Valorant</p>
+  </div>
+</footer>

@@ -1,0 +1,356 @@
+
+/* Body */
+body {
+  background:#1a2a3a;
+  color: #fffbf5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background-size: cover;
+  height: 25rem;
+}
+
+/* Navbar mejorado */
+.navbar {
+  background: linear-gradient(90deg, #000000 0%, #0f1923 100%) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 0.8rem 1rem;
+  z-index: 9999;      /* ensure navbar is on top */
+}
+
+.navbar-brand {
+  color: #ff4655 !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link {
+  color: #fffbf5 !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 4px;
+  margin: 0 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #fffbf5 !important;
+  background-color: #ff4655;
+  transform: translateY(-2px);
+}
+
+/* Botón de inicio de sesión */
+.navbar .btn-primary {
+  background: linear-gradient(45deg, #ff4655, #ff5e6c);
+  border: none;
+  transform: scale(1.05);
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.nav-item.dropdown:hover .dropdown-menu.show {
+  display: block;
+  margin-top: 0;
+  /*evitasaltovisual*/opacity: 1;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+/* Offcanvas mejorado */
+.offcanvas {
+  background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%) !important;
+  color: #fffbf5;
+}
+
+.offcanvas .offcanvas-title {
+  color: #ff4655;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.offcanvas .nav-link {
+  color: #fffbf5 !important;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #2a3b4c;
+  transition: all 0.3s ease;
+
+}
+
+.offcanvas .nav-link:hover {
+  color: #fffbf5 !important;
+  background-color: #ff4655;
+  padding-left: 1.5rem;
+}
+
+.offcanvas .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+.offcanvas .btn-close:hover {
+  opacity: 1;
+}
+/* Hero section */
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+
+/* Carrusel mejorado */
+.carousel {
+  max-height: 600px;
+  overflow: hidden;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-item img {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-indicators button {
+  background-color: #ff4655 !important;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+/* Tarjetas mejoradas */
+.card {
+  background: linear-gradient(145deg, #1a2a3a, #0f1923);
+  border: 2px solid #ff4655;
+  border-radius: 12px;
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(255, 70, 85, 0.1);
+  overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.card:hover {
+
+  border-color: #fffbf5;
+  box-shadow: 0 12px 25px rgba(255, 70, 85, 0.3);
+  transform: scale(1.03);
+}
+
+.card-title {
+  color: #ff4655;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-text {
+  color: #fffbf5;
+  height: auto;
+}
+
+.card-img-top {
+  object-fit: contain;
+  height: 180px;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #0f1923;
+  border-bottom: 2px solid #ff4655;
+}
+
+/* Botones mejorados */
+.btn-primary {
+  background: linear-gradient(45deg, #ff4655, #ff5e6c);
+  border: none;
+  border-radius: 6px;
+  color: #fffbf5;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #ff5e6c, #ff4655);
+  box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);
+  color: #fffbf5;
+}
+
+/* Tablas mejoradas */
+.table {
+  background-color: #1a2a3a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: #fffbf5;
+}
+
+.table thead th {
+  background-color: #ff4655 !important;
+  color: #fffbf5 !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 1rem;
+}
+
+.table tbody tr {
+  background-color: #1a2a3a;
+  color: #fffbf5;
+}
+
+.table tbody tr:hover {
+  background-color: #243447;
+}
+
+.table tbody td {
+  border-color: #2a3b4c;
+  padding: 1rem;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+/* Footer mejorado */
+footer {
+  background: linear-gradient(90deg, #000000 0%, #0f1923 100%);
+  color: #fffbf5;
+  padding: 2.5rem 0;
+  text-align: center;
+  border-top: 3px solid #ff4655;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: #fffbf5;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+footer a:hover {
+  color: #ff4655;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+
+
+/* Títulos de sección */
+h1, h2, h3, h4, h5 {
+  color: #ff4655;
+  font-weight: 700;
+}
+
+
+h2 {
+  background: linear-gradient(45deg, #ff4655, #ff8e9e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  #navbar_normal {
+    display: none;
+  }
+  
+  #navbar_colapsada {
+    display: block;
+  }
+  
+  .carousel,
+  .carousel-item img {
+    max-height: 400px;
+    height: 400px;
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-out;
+}
+@media (min-width: 992px) {
+  #navbar_normal {
+    display: block;
+  }
+  
+  #navbar_colapsada {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-link {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.9rem;
+  }
+  
+  .carousel,
+  .carousel-item img {
+    max-height: 300px;
+    height: 300px;
+  }
+  
+  .card-img-top {
+    height: 150px;
+    padding: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 80%;
+  }
+
+  header .btn-primary{
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
