@@ -48,6 +48,19 @@
       <option value="usuario">Usuario</option>
     </select>
 
+    <!-- Equipo y posición (opcionales) -->
+    <input
+      type="text"
+      placeholder="Equipo (opcional)"
+      [(ngModel)]="equipo"
+      name="equipo">
+
+    <input
+      type="text"
+      placeholder="Posición (opcional)"
+      [(ngModel)]="posicion"
+      name="posicion">
+
     <button class="btn-registro" (click)="registrar()">Crear Cuenta</button>
   </form>
 

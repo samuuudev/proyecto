@@ -1,4 +1,51 @@
 <div class="container">
     <h1>Página del jugador</h1>
-    <p>Bienvenido a la página del usuario tipo jugador, esta es una pagina de ejemplo.</p>
+
+    <div *ngIf="currentUser; else noUser">
+        <p>Bienvenido, <strong>{{ currentUser.username || 'jugador' }}</strong></p>
+
+        <p *ngIf="equipo; else sinEquipo">Equipo: <strong>{{ equipo }}</strong></p>
+        <ng-template #sinEquipo>
+            <p><em>Sin equipo asignado. Contacta con administración.</em></p>
+        </ng-template>
+
+        <div *ngIf="cargando">Cargando partidos...</div>
+        <div *ngIf="error">{{ error }}</div>
+
+        <div *ngIf="!cargando && partidos && partidos.length > 0; else noPartidos">
+            <h3>Partidos asignados</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Equipo A</th>
+                        <th>Equipo B</th>
+                        <th>Fecha</th>
+                        <th>Mapa</th>
+                        <th>Estado</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let partido of partidos">
+                        <td>{{ partido.equipoA }}</td>
+                        <td>{{ partido.equipoB }}</td>
+                        <td>{{ partido.fecha | date:'short' }}</td>
+                        <td>{{ partido.mapa }}</td>
+                        <td>{{ partido.estado }}</td>
+                        <td>{{ partido.scoreA }} - {{ partido.scoreB }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <ng-template #noPartidos>
+            <p><em>No hay partidos asignados a tu equipo.</em></p>
+        </ng-template>
+
+    </div>
+
+    <ng-template #noUser>
+        <p>No hay usuario autenticado. Inicia sesión para ver tus partidos.</p>
+    </ng-template>
+
 </div>

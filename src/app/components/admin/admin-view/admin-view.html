@@ -3,7 +3,6 @@
     <nav>
       <h2>Admin</h2>
       <a (click)="mostrar('usuarios')">Usuarios</a>
-      <a (click)="mostrar('arbitros')">Arbitros</a>
       <a (click)="mostrar('partidos')">partidos</a>
     </nav>
   </aside>
@@ -11,9 +10,6 @@
   <main class="content">
     <div *ngIf="seccionActiva === 'usuarios'" class="usuariosCRUD">
       <app-jugadores-manager></app-jugadores-manager>
-    </div>
-    <div *ngIf="seccionActiva === 'arbitros'" class="arbitrosCRUD">
-      <app-arbitros-manager></app-arbitros-manager>
     </div>
     <div *ngIf="seccionActiva === 'partidos'" class="partidosCRUD">
       <app-partidos-manager></app-partidos-manager>

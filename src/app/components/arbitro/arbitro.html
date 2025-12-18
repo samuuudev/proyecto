@@ -1,4 +1,55 @@
 <div class="container">
-    <h1>Página del arbitro</h1>
-    <p>Bienvenido a la página del usuario tipo arbitro, esta es una pagina de ejemplo.</p>
+    <h1>Página del árbitro</h1>
+
+    <div *ngIf="cargando">Cargando partidos...</div>
+    <div *ngIf="error">{{ error }}</div>
+
+    <table *ngIf="!cargando && partidos.length" class="table">
+        <thead>
+            <tr>
+                <th>Equipo A</th>
+                <th>Equipo B</th>
+                <th>Fecha</th>
+                <th>Mapa</th>
+                <th>Estado</th>
+                <th>Resultado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let partido of partidos">
+                <td>{{ partido.equipoA }}</td>
+                <td>{{ partido.equipoB }}</td>
+                <td>{{ partido.fecha | date:'short' }}</td>
+                <td>{{ partido.mapa }}</td>
+                <td *ngIf="editId !== (partido._id || partido.id)">{{ partido.estado }}</td>
+                <td *ngIf="editId === (partido._id || partido.id)">
+                    <select [(ngModel)]="form.estado" name="estado">
+                        <option value="pendiente">pendiente</option>
+                        <option value="en curso">en curso</option>
+                        <option value="finalizado">finalizado</option>
+                    </select>
+                </td>
+
+                <td *ngIf="editId !== (partido._id || partido.id)">{{ partido.scoreA }} - {{ partido.scoreB }}</td>
+                <td *ngIf="editId === (partido._id || partido.id)">
+                    <input type="number" [(ngModel)]="form.scoreA" name="scoreA" style="width:60px" /> -
+                    <input type="number" [(ngModel)]="form.scoreB" name="scoreB" style="width:60px" />
+                </td>
+
+                <td>
+                    <button *ngIf="editId !== (partido._id || partido.id)" (click)="startEdit(partido)">Editar</button>
+                    <span *ngIf="editId === (partido._id || partido.id)">
+                        <button (click)="guardar(partido)">Guardar</button>
+                        <button (click)="cancelar()">Cancelar</button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!cargando && partidos.length === 0">
+        <p>No hay partidos disponibles.</p>
+    </div>
+
 </div>

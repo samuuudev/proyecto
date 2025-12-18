@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import Usuario from "./src/app/core/models/User.js";
 import Partido from "./src/app/core/models/Partido.js";
+import Jugador from "./src/app/core/models/Jugador.js";
 
 dotenv.config();
 const app = express();
@@ -39,7 +40,7 @@ app.post("/api/login", async (req, res) => {
 
 
 app.post("/api/registro", async (peticion, respuesta) => {
-  const { username, password, email, dni } = peticion.body;
+  const { username, password, email, dni, equipo, posicion } = peticion.body;
   console.log("Datos de registro recibidos: ", peticion.body);
 
   try {
@@ -52,7 +53,20 @@ app.post("/api/registro", async (peticion, respuesta) => {
     });
     await usuarioCreado.save();
 
-    respuesta.json({ message: "Usuario registrado con exito", usuarioCreado });
+    // Si se proporcionó información de jugador, crear documento en colección 'jugadores'
+    let jugadorCreado = null;
+    try {
+      jugadorCreado = new Jugador({
+        userId: usuarioCreado._id,
+        equipo: equipo || null,
+        posicion: posicion || null,
+      });
+      await jugadorCreado.save();
+    } catch (jErr) {
+      console.error('Error creando documento jugador:', jErr);
+    }
+
+    respuesta.json({ message: "Usuario registrado con exito", usuarioCreado, jugadorCreado });
 
   } catch (error) {
     console.log("Error al crear el usuario: ", error);
@@ -161,6 +175,43 @@ app.delete("/api/partidos/:id", async (req, res) => {
     res.json({ message: "Partido eliminado" });
   } catch (error) {
     console.error("Error eliminando partido:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Jugadores
+
+// Obtener todos los jugadores
+app.get('/api/jugadores', async (req, res) => {
+  try {
+    const jugadores = await Jugador.find().populate('userId');
+    res.json(jugadores);
+  } catch (error) {
+    console.error('Error obteniendo jugadores:', error);
+    res.status(500).json({ error: 'Error obteniendo jugadores' });
+  }
+});
+
+// Obtener jugador por userId
+app.get('/api/jugadores/:userId', async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const jugador = await Jugador.findOne({ userId }).populate('userId');
+    res.json(jugador);
+  } catch (error) {
+    console.error('Error obteniendo jugador:', error);
+    res.status(500).json({ error: 'Error obteniendo jugador' });
+  }
+});
+
+// Crear jugador
+app.post('/api/jugadores', async (req, res) => {
+  try {
+    const nuevo = new Jugador(req.body);
+    await nuevo.save();
+    res.json({ message: 'Jugador creado', nuevo });
+  } catch (error) {
+    console.error('Error creando jugador:', error);
     res.status(400).json({ error: error.message });
   }
 });

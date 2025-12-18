@@ -33,6 +33,63 @@
     line-height: 1.6;
     max-width: 600px;
   }
+
+  /* Tabla y controles usados en el componente árbitro */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.25rem;
+    background: #0f1923;
+    border: 2px solid #ff4655;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .table th, .table td {
+    padding: 0.8rem 1rem;
+    color: #fffbf5;
+    text-align: left;
+  }
+
+  .table thead th {
+    background: linear-gradient(45deg, #ff4655, #ff8e9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .table tbody tr:hover {
+    background: rgba(255, 70, 85, 0.04);
+  }
+
+  button {
+    background: #ff4655;
+    color: #fff;
+    border: none;
+    padding: 0.45rem 0.7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  button:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(255,70,85,0.12); }
+
+  /* Inputs inline edit */
+  input[type="number"], select {
+    background: #0f1923;
+    border: 2px solid #2a3b4c;
+    color: #fffbf5;
+    padding: 0.35rem 0.5rem;
+    border-radius: 6px;
+    width: auto;
+  }
 }
 
 // Responsive

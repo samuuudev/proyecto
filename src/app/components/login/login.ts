@@ -27,7 +27,6 @@ export class LoginComponent {
     next: res => {
       console.log('Login: ', res);
       if (res.user) {
-        // if (res.user.rol == "admin") 
         switch (res.user.rol) {
           case "admin":
             this.router.navigate(['/admin']);
@@ -35,7 +34,12 @@ export class LoginComponent {
           case "jugador":
             this.router.navigate(["/jugador"]);
             break;
-          }
+          case "arbitro":
+            this.router.navigate(["/arbitro"]);
+            break;
+          default:
+            this.errorMessage = 'Rol no manejado';
+        }
 
       } else {
         this.errorMessage = 'Usuario o contraseña incorrectos';

@@ -18,12 +18,14 @@ export class RegistroComponent {
   password = "";
   email = "";
   dni = "";
+  equipo = "";
+  posicion = "";
 
   constructor(private authService: AuthService, private router: Router) {}
 
   registrar() {
     console.log("Registro con: ", this.username, this.password, this.email, this.dni);
-    this.authService.register(this.username, this.password, this.email, this.dni).subscribe({
+    this.authService.register(this.username, this.password, this.email, this.dni, this.equipo, this.posicion).subscribe({
       next: (res) => {
         console.log("Respuesta del servidor:", res);
         window.alert("Registro exitoso: " + JSON.stringify(res));

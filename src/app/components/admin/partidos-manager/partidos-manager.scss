@@ -1,5 +1,6 @@
 /* Contenedor principal del CRUD */
-.admin-panel-content {
+.admin-panel-content,
+.partidos-manager-container {
   background: rgba(26, 42, 58, 0.5);
   padding: 2rem;
   border-radius: 12px;
@@ -28,7 +29,7 @@
 }
 
 /* Formulario de nuevo usuario */
-.new-user-form {
+.form-container {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -39,9 +40,15 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.new-user-form .form-input {
-  flex: 1;
-  min-width: 200px;
+.form-container .form-group {
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-container input,
+.form-container select {
   padding: 0.9rem;
   border-radius: 6px;
   border: 2px solid #ff4655;
@@ -51,7 +58,8 @@
   transition: 0.3s;
 }
 
-.new-user-form .form-input:focus {
+.form-container input:focus,
+.form-container select:focus {
   border-color: #ff8e9e;
   box-shadow: 0 0 8px rgba(255, 70, 85, 0.6);
   outline: none;
@@ -82,9 +90,12 @@
   overflow-x: auto;
 }
 
-.admin-table {
-  width: 100%;
+.partidos-list table, .partidos-list thead, .partidos-list tbody, .partidos-list th, .partidos-list td, .partidos-list tr {
   border-collapse: collapse;
+}
+
+.partidos-list table {
+  width: 100%;
   margin-top: 1rem;
   background: #0f1923;
   border: 2px solid #ff4655;
@@ -92,8 +103,11 @@
   overflow: hidden;
 }
 
-.admin-table th {
-  background: #ff4655;
+.partidos-list thead th {
+  background: linear-gradient(45deg, #ff4655, #ff8e9e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   color: #fffbf5;
   text-transform: uppercase;
   padding: 0.9rem;
@@ -101,15 +115,44 @@
   font-weight: 700;
 }
 
-.admin-table td {
+.partidos-list td {
   padding: 0.9rem;
-  border-bottom: 1px solid #1a2a3a;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
   color: #fffbf5;
 }
 
-.admin-table tr:hover {
-  background: rgba(255, 70, 85, 0.1);
+.partidos-list tr:hover { background: rgba(255, 70, 85, 0.04); }
+
+/* Botones dentro del manager */
+.partidos-manager-container .btn {
+  padding: 0.9rem 1.2rem;
+  background: #ff4655;
+  color: #fffbf5;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.3s ease;
 }
+
+.partidos-manager-container .btn:hover { background: #ff2c3a; }
+
+.partidos-manager-container .btn-edit { padding: 0.6rem; width: 36px; height: 36px; display:inline-flex; justify-content:center; align-items:center; }
+.partidos-manager-container .btn-delete { background: #ff2c3a; color: #fff; padding: 0.6rem 0.8rem; }
+
+.partidos-manager-container .btn-primary { background: linear-gradient(45deg, #ff4655, #ff5e6c); box-shadow: 0 4px 12px rgba(255,70,85,0.3); }
+.partidos-manager-container .btn-secondary { background: #ffffff; color: #0a0a0a; }
+
+.no-data { text-align: center; padding: 1rem; color: #8fa3b7; }
+
+/* Estado badges */
+.estado-pendiente { color: #ffbf00; font-weight: 700; }
+.estado-en\ curso { color: #3ca301; font-weight: 700; }
+.estado-finalizado { color: #9ad4ff; font-weight: 700; }
 
 /* Columna acciones */
 .action-column {

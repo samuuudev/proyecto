@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login';
 import { RegistroComponent } from './components/registro/registro';
 import { Admin } from './components/admin/admin-view/admin-view';
 import { Jugador } from './components/jugador/jugador';
+import { Arbitro } from './components/arbitro/arbitro';
 
 // Imports de los componentes admin
 import { ArbitrosManager } from './components/admin/arbitros-manager/arbitros-manager';
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'admin', component: Admin },
   { path: 'jugador', component: Jugador },
+  { path: 'arbitro', component: Arbitro },
   { path: "usuariosManager", component: JugadoresManager},
   { path: "arbitrosManager", component: ArbitrosManager },
 ];
